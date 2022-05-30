@@ -1,5 +1,7 @@
+{% load bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +11,21 @@
     {% else %}
     <title> Picasso Gallery </title>
     {% endif %}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    {% endblock %}
+
 </head>
+
 <body>
     {% block content %}
-    <h1>Picasso Succassa || Picasso Gallery.Capture every moment</h1>
+    <h1 class='text-center'>Picasso Succassa || Picasso Gallery.Capture every moment</h1>
+    {% endblock %}
+
+    {% block scripts %}
+    {% bootstrap_javascript %}
     {% endblock %}
 </body>
+
 </html>
