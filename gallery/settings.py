@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'picasso.apps.PicassoConfig',
     'bootstrap5'
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +133,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# adding config
+cloudinary.config( 
+  cloud_name = "flowambui", 
+  api_key = "223871825289445", 
+  api_secret = "mVXg7vALtkWComzR68K1HKsaO-Q" 
+)
