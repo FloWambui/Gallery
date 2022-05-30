@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'picasso.apps.PicassoConfig',
-    'bootstrap5'
+    'bootstrap5',
     'cloudinary'
 ]
 
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gallery',
+        'NAME': 'picasso1',
         'USER': 'moringa',
         'PASSWORD':'Access',
     }

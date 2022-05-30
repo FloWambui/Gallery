@@ -3,4 +3,6 @@ from . import views
 
 urlpatterns=[
     re_path('^$',views.welcome,name = 'welcome'),
+    
+
 ]
