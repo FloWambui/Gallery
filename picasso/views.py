@@ -12,15 +12,15 @@ def welcome(request):
     return render(request,'index.html', {'images':images, 'locations':locations, 'categories':categories})
 
 def search_results(request):
-    if 'category' in request.GET and request.GET["category"]:
-        search_term = request.GET.get("category").lower()
-        searched_images = Image.filter_by_category(search_term)
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_category(search_term)
         message = f"{search_term}"
-        locations = Location.objects.all()
+    
 
-        return render(request, 'search.html', {"message": message, "images": searched_images, 'locations': locations})
+        return render(request, 'search.html', {"message": message, "images": searched_images})
 
     else:
-        locations = Location.objects.all()
+    
         message = "You haven't searched for any term"
-        return render(request, 'search.html', {"message": message, 'locations': locations})
+        return render(request, 'search.html', {"message": message})

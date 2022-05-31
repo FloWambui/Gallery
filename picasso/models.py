@@ -46,7 +46,7 @@ class Image(models.Model):
     image = CloudinaryField('image')
     name = models.CharField(max_length=50)
     description = models.TextField()
-    date_created = models.DateTimeField(auto_now_add=True, blank=True)
+    date= models.DateTimeField(auto_now_add=True, blank=True)
     location=models.ForeignKey('Location', on_delete=models.CASCADE)
     category=models.ForeignKey('Category', on_delete=models.CASCADE)
 
@@ -88,11 +88,9 @@ class Image(models.Model):
         self.delete()
 
     @classmethod
-    def search_image(cls,category):
-        try:
-            searched=Category.objects.get(name=category)
-            images = Image.objects.filter(category=searched.id)
-            return images
-        except Exception:
-            return "No images matching category"
+    def search_by_category(cls, search_term):
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
+
+        
         
