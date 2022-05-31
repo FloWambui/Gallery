@@ -65,11 +65,7 @@ python manage.py runserver
 
 ### Apperance.
 Homepage:
-![HomePage](/static/photos/picasso.png)
-
-View More:
-![HomePage](/static/photos/deets.png)
-
+![HomePage](/static/photos/landing.png)
 
 - Live link to view the project <a target="_blank" href="https://picassogallery.herokuapp.com/">Picasso</a>
 
