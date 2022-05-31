@@ -13,7 +13,6 @@ def welcome(request):
 
 def search_results(request):
     if 'category' in request.GET and request.GET["category"]:
-        # change the search to be in lowercase
         search_term = request.GET.get("category").lower()
         searched_images = Image.filter_by_category(search_term)
         message = f"{search_term}"
@@ -25,5 +24,3 @@ def search_results(request):
         locations = Location.objects.all()
         message = "You haven't searched for any term"
         return render(request, 'search.html', {"message": message, 'locations': locations})
-
-
