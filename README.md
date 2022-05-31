@@ -71,7 +71,7 @@ View More:
 ![HomePage](/static/photos/deets.png)
 
 
-- Live link to view the project <a target="_blank" href="">Picasso</a>
+- Live link to view the project <a target="_blank" href="https://picassogallery.herokuapp.com/">Picasso</a>
 
 ### Authors Info
 Email Address- gflorencewambui@gmail.com.
