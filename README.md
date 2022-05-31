@@ -67,7 +67,7 @@ python manage.py runserver
 Homepage:
 ![HomePage](/static/photos/landing.png)
 
-- Live link to view the project <a target="_blank" href="https://picassogallery.herokuapp.com/">Picasso</a>
+- Live link to view the project <a target="_target" href="https://picassogallery.herokuapp.com/">Picasso</a>
 
 ### Authors Info
 Email Address- gflorencewambui@gmail.com.
