@@ -3,10 +3,11 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 body{
     font-family: 'Poppins', sans-serif;
+    /* background-color: #182825; */
 }
 .textdisplay{
   font-weight: 500 !important;
@@ -42,4 +43,11 @@ small{
 .navbar-brand{
     font-family: 'Rubik Wet Paint', cursive;
     font-size: 28px;
+}
+.carddisplay{
+  height:23cm !important;
+  border: 2px solid #F7C132;
+  border-radius: 8px !important;
+  box-shadow: 0 0 11px 5px rgba(242, 239, 248, 0.1) !important;
+
 }
