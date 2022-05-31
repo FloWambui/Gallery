@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -39,4 +40,7 @@ small{
     text-align: center;
     font-size:18px;
 }
-
+.navbar-brand{
+    font-family: 'Rubik Wet Paint', cursive;
+    font-size: 28px;
+}
