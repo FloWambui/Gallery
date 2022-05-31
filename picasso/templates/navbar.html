@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-dark" role="navigation">
+<nav class="navbar navbar-expand-lg bg-warning" role="navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Picasso</a>
-    <button class="navbar-toggler bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,9 +13,9 @@
 
 
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex" role="search" action="{% url 'search_results' %}">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>

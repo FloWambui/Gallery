@@ -1,7 +1,59 @@
 {%extends 'base.html'%}
 {% block content %}
-<div class="container-fluid">
-    <h1 class='text-center'>Picasso Succassa || Picasso Gallery.Capture every moment</h1>
+<div class="test">
+    
 </div>
+<div class="container-fluid boded" id="b">
+    <div class="container">
+        <h1 class='text-center'>Picasso Gallery. Explore Art...</h1>
+        <hr>
+        <div class="card-columns">
+            {% for image in images %}
+            <a href="" class="card" data-toggle="modal" data-target="#test{{image.id}}">
+                <img src="{{image.image.url}}" alt="{{image.name}}" class="card-img"
+                    style="height: 370px; width: 360px;">
+                <h4 class="text-center text-success" style="text-transform: uppercase;">{{image.name}}</h4>
+            </a>
 
+
+            <div class="modal fade" id="test{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{image.name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{image.image.url}}" alt="{{image.name}}" class="img-fluid"
+                                style="height: 300px; width: 500px;">
+                            <p class="imgdesc text-center">{{image.description}}</p>
+                            <p class="bg-success d-inline"><b>Category: {{image.category}}</b></p>
+                            <p class="bg-info d-inline"><b>Location: {{image.location}}</b></p><br>
+                            <p class="bg-info d-inline"><b>Date created: {{image.date}}</b></p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <input class="form-control input-lg" type="text" value="{{image.image.url}}"
+                                id="{{image.id}}.url">
+                            <button class="btn copy-btn btn-modal btn-success btn-sm" type="button"
+                                onclick="copyLink('{{image.id}}.url')">Copy</button>
+
+                            <script>
+                                function copyLink(element) {
+                                    document.getElementById(element).select();
+                                    document.execCommand("copy");
+                                    alert('url successfully copied');
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+        </div>
 {% endblock %}

@@ -79,13 +79,20 @@ class Image(models.Model):
     def filter_by_category(cls, category):
         images = Image.objects.filter(category__name=category)
         return images
-
-    
+  
     
     def __str__(self):
         return self.name
 
-
-
     def delete_image(self):
         self.delete()
+
+    @classmethod
+    def search_image(cls,category):
+        try:
+            searched=Category.objects.get(name=category)
+            images = Image.objects.filter(category=searched.id)
+            return images
+        except Exception:
+            return "No images matching category"
+        

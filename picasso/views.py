@@ -1,10 +1,29 @@
 from django.http  import HttpResponse
 from django.shortcuts import render
 import datetime as dt
+from .models import Category, Location, Image
 
 
 # Create your views here.
 def welcome(request):
+    images=Image.objects.all()
+    locations= Location.objects.all()
+    categories=Category.objects.all()
+    return render(request,'index.html', {'images':images, 'locations':locations, 'categories':categories})
 
-    return render(request,'index.html')
+def search_results(request):
+    if 'category' in request.GET and request.GET["category"]:
+        # change the search to be in lowercase
+        search_term = request.GET.get("category").lower()
+        searched_images = Image.filter_by_category(search_term)
+        message = f"{search_term}"
+        locations = Location.objects.all()
+
+        return render(request, 'search.html', {"message": message, "images": searched_images, 'locations': locations})
+
+    else:
+        locations = Location.objects.all()
+        message = "You haven't searched for any term"
+        return render(request, 'search.html', {"message": message, 'locations': locations})
+
 
