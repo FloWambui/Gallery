@@ -40,6 +40,12 @@ class Category(models.Model):
     def update_category(cls,id,name):
         cls.objects.filter(id=id).update(name=name)
 
+    @classmethod
+    def search_by_category(cls, search_term):
+        images = cls.objects.filter(name__icontains=search_term)
+        return images
+
+
 
 class Image(models.Model):
     #image field
@@ -87,10 +93,10 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    @classmethod
-    def search_by_name(cls, search_term):
-        images = cls.objects.filter(name__icontains=search_term)
-        return images
+    # @classmethod
+    # def search_by_name(cls, search_term):
+    #     images = cls.objects.filter(name__icontains=search_term)
+    #     return images
 
         
         

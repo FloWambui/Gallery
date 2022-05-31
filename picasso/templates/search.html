@@ -2,27 +2,27 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {% if images%}
-        <h2 class="text-center">Found {{ images|length }} images in '{{message}}' category</h2>
+        {% if categories%}
+        <h2 class="text-center">Found {{ categories|length }} images in '{{message}}' category</h2>
         {% else %}
-        <h2 class="text-center"> Found 0 images for your search term {{message}}</h2>
-        <!-- <a class="d-block mx-auto" href="/">
-            <button class="btn btn-sm btn-warning d-block mx-auto">Back Home</button>
-        </a> -->
-    
-        {% endif %}
+        <h2 class="text-center"> Found 0 images for your search category {{message}}</h2>
         <a class="d-block mx-auto" href="/">
             <button class="btn btn-sm btn-warning d-block mx-auto">Back Home</button>
         </a>
+        {% endif %}
     </div>
-    
+
     <div class="row">
-        {% if images %}
-        {% for image in images %}
-        <div class="col-sm-6 col-md-6">
-            <h1>{{image.category}}</h1>
+        {% if categories %}
+        {% for category in categories %}
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h1>{{category.name}}</h1>
+            {% for image in category.image_set.all %}
             <img src="{{image.image.url}}" alt="Picture">
-            <p>{{image.name}}</p>
+            <h3>{{image.name}}</h3>
+            <p>{{image.description}}</p>
+            {% endfor %}           
+            
         </div>
         {% endfor %}
         {% endif %}
