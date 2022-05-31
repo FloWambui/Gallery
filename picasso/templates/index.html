@@ -1,59 +1,95 @@
-{%extends 'base.html'%}
+{% extends "base.html" %}
 {% block content %}
-<div class="test">
-    
-</div>
-<div class="container-fluid boded" id="b">
-    <div class="container">
-        <h1 class='text-center'>Picasso Gallery. Explore Art...</h1>
-        <hr>
-        <div class="card-columns">
-            {% for image in images %}
-            <a href="" class="card" data-toggle="modal" data-target="#test{{image.id}}">
-                <img src="{{image.image.url}}" alt="{{image.name}}" class="card-img"
-                    style="height: 370px; width: 360px;">
-                <h4 class="text-center text-success" style="text-transform: uppercase;">{{image.name}}</h4>
-            </a>
-
-
-            <div class="modal fade" id="test{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{image.name}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="{{image.image.url}}" alt="{{image.name}}" class="img-fluid"
-                                style="height: 300px; width: 500px;">
-                            <p class="imgdesc text-center">{{image.description}}</p>
-                            <p class="bg-success d-inline"><b>Category: {{image.category}}</b></p>
-                            <p class="bg-info d-inline"><b>Location: {{image.location}}</b></p><br>
-                            <p class="bg-info d-inline"><b>Date created: {{image.date}}</b></p>
-
-                        </div>
-                        <div class="modal-footer">
-                            <input class="form-control input-lg" type="text" value="{{image.image.url}}"
-                                id="{{image.id}}.url">
-                            <button class="btn copy-btn btn-modal btn-success btn-sm" type="button"
-                                onclick="copyLink('{{image.id}}.url')">Copy</button>
-
-                            <script>
-                                function copyLink(element) {
-                                    document.getElementById(element).select();
-                                    document.execCommand("copy");
-                                    alert('url successfully copied');
-                                }
-                            </script>
-                        </div>
-                    </div>
+<div class="photo-gallery">
+  <div class="container-fluid">
+    <div class="px-lg-5">
+      <div class="row">
+        
+        <div class="row">
+          {% for photo in images %}
+          <div class="col-xl-3 col-lg-4 col-md-12 mb-4">
+            <div class="bg-white rounded shadow-sm"><img src="{{ photo.image.url }}" alt=""
+                class="img-fluid card-img-top">
+              <div class="p-4">
+                <h5 class="headings text-center"> <a data-bs-toggle="modal"
+                    data-bs-target="#modalDisplayImageDetails{{photo.id}}"
+                    class="text-dark text-capitalize modal-click">{{ photo.name }}</a></h5>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <small class="text-muted">
+                      <span class="badge rounded-pill bg-info text-white text-capitalize">{{ photo.category }}</span>
+                    </small>
+                  </div>
+                  <div>
+                    <small class="text-muted">
+                      <span class="badge rounded-pill bg-dark text-white text-capitalize">{{ photo.location }}</span>
+                    </small>
+                  </div>
                 </div>
+                <div class="d-flex align-items-center justify-content-between rounded-pill bg-warning px-3 py-2 mt-4">
+                  <a data-bs-toggle="modal" data-bs-target="#modalDisplayImageDetails{{photo.id}}"
+                    class="text-dark modal-click">
+                    <p class="small mb-0">
+                      View More
+                      <i class="fa fa-arrow-right"></i>
+                    </p>
+                  </a>
+                  <div class="badge badge-danger px-3 rounded-pill font-weight-normal text-dark">
+                    {{photo.created_at|date}}
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="modal fade" id="modalDisplayImageDetails{{photo.id}}" tabindex="-1"
+            aria-labelledby="modalDisplayImageDetailsLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalDisplayImageDetailsLabel">{{ photo.name}} <small
+                      class="badge rounded-pill bg-warning text-dark">{{ photo.location}}</small></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="{{ photo.image.url }}" alt="" class="img-fluid">
+                  <div class="content m-3">
+                    <h6 class="headings text-capitalize badge rounded-pill bg-warning text-dark">
+                      <small>{{ photo.category }}</small>
+                    </h6>
+                    <h4 class="headings text-underline">Description</h4>
+                    <p class="m-3 headings">
+                      {{photo.description }}
+                    </p>
+                  </div>
+                  <div class="share-button">
+                    <input type="hidden" value="{{ photo.image.url }}" id="inputShareLink" class="form-control">
+                    <button onclick="shareLink()" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="tooltip"
+                      data-bs-placement="top" title="Click to copy the link">
+                      <i class="fa fa-share"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          {% empty %}
+          <div class="col-md-12">
+            <h1>
+              No photos
+            </h1>
+          </div>
+          {% endfor %}
 
-            {% endfor %}
         </div>
-{% endblock %}
+      </div>
+    </div>
+  </div>
+  <script>
+    function shareLink() {
+      var copyText = document.getElementById('inputShareLink')
+      copyText.select();
+      document.execCommand('copy')
+    }
+  </script>
+  {% endblock %}
