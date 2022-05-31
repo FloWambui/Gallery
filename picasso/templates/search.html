@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         {% if categories%}
-        <h2 class="text-center">Found {{ categories|length }} images in '{{message}}' category</h2>
+        <h2 class="text-center">Found {{ categories|length }} category - '{{message.capitalize}}'</h2>
         {% else %}
         <h2 class="text-center"> Found 0 images for your search category {{message}}</h2>
         <a class="d-block mx-auto" href="/">
@@ -15,17 +15,23 @@
     <div class="row">
         {% if categories %}
         {% for category in categories %}
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <h1>{{category.name}}</h1>
-            {% for image in category.image_set.all %}
-            <img src="{{image.image.url}}" alt="Picture">
-            <h3>{{image.name}}</h3>
-            <p>{{image.description}}</p>
-            {% endfor %}           
-            
+        <div class="card-group">
+            <div class="card">
+                <div class="card-display">
+                    {% for image in category.image_set.all %}
+                    <img src="{{image.image.url}}" class="card-img-top pt-5" alt="..." style="height:30cm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{category.name}}</h5>
+                        <p class="card-text">{{image.description}}</p>
+                        <div class="card-footer">
+                            <small class="text-muted">{{image.date}}</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
         </div>
-        {% endfor %}
-        {% endif %}
-    </div>
-</div>
 {% endblock %}
