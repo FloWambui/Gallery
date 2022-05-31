@@ -19,9 +19,10 @@
     <div class="row">
         {% if images %}
         {% for image in images %}
-        <div class="col-sm-6 col-md-3">
-            <h1>{{image.name}}</h1>
-            <p>{{image.description}}</p>
+        <div class="col-sm-6 col-md-6">
+            <h1>{{image.category}}</h1>
+            <img src="{{image.image.url}}" alt="Picture">
+            <p>{{image.name}}</p>
         </div>
         {% endfor %}
         {% endif %}
