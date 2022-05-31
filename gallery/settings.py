@@ -151,8 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # adding config
 cloudinary.config( 
-    cloud_name=config('CLOUDINARY_CLOUD_NAME'),
-    api_key=config('CLOUDINARY_API_KEY'),
-    api_secret=config('CLOUDINARY_API_SECRET'),
-    secure=True
+  cloud_name = "flowambui", 
+  api_key = "223871825289445", 
+  api_secret = "mVXg7vALtkWComzR68K1HKsaO-Q" 
 )
