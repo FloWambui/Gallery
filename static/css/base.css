@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
 *{
     margin: 0;
@@ -9,10 +8,10 @@
 body{
     font-family: 'Poppins', sans-serif;
 }
-.headings {
-  font-family: 'Merienda One', cursive;
+.textdisplay{
+  font-weight: 500 !important;
+  font-size: 24px;
 }
-
 .photo-gallery {
   margin-top: 30px;
 }

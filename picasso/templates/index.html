@@ -12,7 +12,7 @@
                             <img src="{{ photo.image.url }}" alt=""
                                 class="img-fluid card-img-top"  style="height:600px; width:500px">
                             <div class="p-3">
-                                <h5 class="headings text-center"> <a data-bs-toggle="modal"
+                                <h5 class="textdisplay text-center"> <a data-bs-toggle="modal"
                                         data-bs-target="#modalDisplayImageDetails{{photo.id}}"
                                         class="text-dark text-capitalize modal-click">{{ photo.name }}</a></h5>
                                 <div class="d-flex justify-content-between pt-3">
@@ -58,11 +58,11 @@
                                 <div class="modal-body">
                                     <img src="{{ photo.image.url }}" alt="" class="img-fluid">
                                     <div class="content m-3">
-                                        <h6 class="headings text-capitalize badge rounded-pill bg-warning text-dark">
+                                        <h6 class="text-display text-capitalize badge rounded-pill bg-warning text-dark">
                                             <small>{{ photo.category }}</small>
                                         </h6>
-                                        <h4 class="headings text-underline">Description</h4>
-                                        <p class="m-3 headings">
+                                        <h4 class="text-display text-underline">Description</h4>
+                                        <p class="m-3 text-display">
                                             {{photo.description }}
                                         </p>
                                     </div>
